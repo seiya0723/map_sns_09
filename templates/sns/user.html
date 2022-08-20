@@ -1,0 +1,28 @@
+{% extends "sns/base.html" %}
+{% load static %}
+
+{% block extra_head %}
+{% endblock %}
+
+
+{% block main %}
+
+<h2>ユーザー情報編集</h2>
+
+<form action="" method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+    <div class="form-inline">
+        <input class="form-control" type="text" name="last_name" value="{{ user.last_name }}" placeholder="姓">
+        <input class="form-control" type="text" name="first_name" value="{{ user.first_name }}" placeholder="名">
+    </div>
+
+    <input class="form-control" type="text" name="nickname" value="{{ user_detail.nickname }}" placeholder="ニックネーム">
+    <textarea class="form-control" name="description">{{ user_detail.description }}</textarea>
+
+    <img src="{{ user_detail.icon.url }}" alt="設定された画像">
+    <input type="file" name="icon">
+
+	<input class="btn btn-outline-primary form-control" type="submit" value="送信">
+</form>
+
+{% endblock %}
